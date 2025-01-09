@@ -1,10 +1,13 @@
 <div class="flex justify-between items-center mb-8">
     <div class="flex items-center space-x-4">
-        <div class="bg-gray-200 p-4 rounded-lg">
-            <img alt="User avatar" class="rounded-full" height="50" src="https://placehold.co/50x50" width="50"/>
-        </div>
+        {{-- <div class="bg-gray-200 p-4 rounded-lg ">
+          <div class="overflow-hidden w-16 h-16 rounded-full">
+            <img alt="User avatar" class="w-full h-full object-cover" height="50" src="{{asset('assets/pp_deafult.jpg')}}" width="50"/>
+          </div>
+            
+        </div> --}}
         <div>
-            <h1 class="text-2xl font-bold">Hello (nama)</h1>
+            <h1 class="text-2xl font-bold">Hello {{ auth()->user()->name }}</h1>
             <p class="text-gray-600">Selamat datang di kasirku, Enjoy for experience</p>
         </div>
     </div>
@@ -20,13 +23,13 @@
             <!-- Button -->
             <button 
               @click="open = !open" 
-              class="focus:outline-none"
+              class="overflow-hidden w-10 h-10 rounded-full"
             >
               <img 
                 alt="User avatar" 
-                class="rounded-full" 
+                class="w-full h-full object-cover" 
                 height="40" 
-                src="https://placehold.co/40x40" 
+                src="{{asset('assets/pp_deafult.jpg')}}" 
                 width="40"
               />
             </button>

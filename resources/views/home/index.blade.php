@@ -2,6 +2,7 @@
 @section('title','Home')
 @section('content')
 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-6">
+
     <div class="bg-black drop text-white p-6 rounded-lg">
      <div class="flex justify-between items-center">
       <div>
@@ -19,7 +20,8 @@
       </i>
      </div>
     </div>
-    <div class="bg-black drop text-white p-6 rounded-lg shadow-lg">
+
+    {{-- <div class="bg-black drop text-white p-6 rounded-lg shadow-lg">
      <div class="flex justify-between items-center">
       <div>
        <div class="text-lg">
@@ -32,7 +34,8 @@
       <i class="fas fa-eye text-4xl">
       </i>
      </div>
-    </div>
+    </div> --}}
+
     <div class="bg-black drop text-white p-6 rounded-lg shadow-lg">
      <div class="flex justify-between items-center">
       <div>
@@ -47,6 +50,7 @@
       </i>
      </div>
     </div>
+
     <div class="bg-black drop text-white p-6 rounded-lg shadow-lg">
      <div class="flex justify-between items-center">
       <div>
@@ -64,6 +68,7 @@
       </i>
      </div>
     </div>
+    
    </div>
 @endsection
 @push('css')

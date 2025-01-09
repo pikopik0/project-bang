@@ -46,10 +46,10 @@
      Back to Home
     </a>
     <footer class="mt-12 text-gray-400">
-     © 2020 Fog error. All rights reserved | Design by
-     <a class="text-gray-300" href="#">
+     © 2020 Fog error. All rights reserved 
+     {{-- <a class="text-gray-300" href="#">
       W3layouts
-     </a>
+     </a> --}}
     </footer>
    </div>
   </div>

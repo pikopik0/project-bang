@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+// Route::get('/', function () {
+//     return view('home.index');
+// });
 
-Route::get('login', function () {
-    return view('partials.login');
-})->name('login');
-Route::get('register', function () {
-    return view('partials.register');
-})->name('register');
+
+Route::get('dashboard',[MainController::class,'index'])->name('dashboard');
+
+Route::get('/',[MainController::class,'viewlogin'])->name('login');
+Route::post('process-login',[MainController::class,'login'])->name('process-login');
+Route::get('register',[MainController::class,'viewregister'])->name('register');   
+Route::post('process-register',[MainController::class,'register'])->name('process-register');
+
+
+Route::get('penjualan',[PenjualanController::class,'index'])->name('penjualan');
+
+Route::get('produk',[ProdukController::class,'index'])->name('produk');
+
+Route::get('pelanggan',[PelangganController::class,'index'])->name('pelanggan');

@@ -34,22 +34,25 @@
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-900 bg-opacity-50">
     <div class="w-full max-w-xs glass-effect p-8 rounded-lg">
-        <form>
+        {{-- <h1 class="text-2xl font-bold text-white  ">Welcome To Kasirku</h1>
+        <p class="text-md  text-white mb-12 ">Tempat Untuk Melakukan Transaksi</p> --}}
+        <form method="POST" action="{{route('process-login')}}">
+            @csrf
             <div class="mb-4">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-4 py-2">
                     <i class="fas fa-envelope text-white mr-3"></i>
-                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" type="email" placeholder="Email">
+                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" name="email" type="email" placeholder="Email">
                 </div>
             </div>
             <div class="mb-6">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-4 py-2">
                     <i class="fas fa-lock text-white mr-3"></i>
-                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" type="password" placeholder="Password">
+                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" name="password" type="password" placeholder="Password">
                 </div>
             </div>
             <div class="flex items-center justify-between">
-                <button class="bg-white bg-opacity-20 w-full hover:bg-opacity-30 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" type="button">
-                    Sign In
+                <button class="bg-white bg-opacity-20 w-full hover:bg-opacity-30 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" type="submit">
+                    Log in
                 </button>
             </div>
             <div class="flex items-center justify-between mt-4">

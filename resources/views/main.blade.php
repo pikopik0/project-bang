@@ -26,41 +26,41 @@
   <div class="bg-black text-white w-20 flex flex-col justify-between items-center py-5 rounded-[1rem] m-4 mr-0" style="filter: drop-shadow(0px 0px 10px #00000085);">
     <!-- Logo -->
     <!-- Menu Items -->
-    <nav x-data="{ active: 'home' }" class="flex flex-col space-y-6 bg-black text-white w-20 py-5 items-center">
+    <nav x-data="{ active: '{{ Route::currentRouteName() }}' }" class="flex flex-col space-y-6 bg-black text-white w-20 py-5 items-center">
       <!-- Logo -->
       <div class="text-3xl font-bold text-center">K.</div>
   
       <!-- Menu Items -->
       <a 
-        href="#" 
-        @click="active = 'home'" 
-        :class="active === 'home' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
+        href="{{route('dashboard')}}" 
+        @click="active = 'dashboard'" 
+        :class="active === 'dashboard' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
         class="text-xl p-3 rounded-lg"
       >
         <i class="fa-solid fa-house"></i>
       </a>
   
       <a 
-        href="#" 
-        @click="active = 'notes'" 
-        :class="active === 'notes' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
+        href="{{route('penjualan')}}" 
+        @click="active = 'penjualan'" 
+        :class="active === 'penjualan' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
         class="text-xl p-3 rounded-lg"
       >
         <i class="fa-solid fa-note-sticky"></i>
       </a>
   
       <a 
-        href="#" 
-        @click="active = 'stacked'" 
-        :class="active === 'stacked' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
+        href="{{route('produk')}}" 
+        @click="active = 'produk'" 
+        :class="active === 'produk' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
         class="text-xl p-3 rounded-lg"
       >
         <i class="fa-solid fa-boxes-stacked"></i>
       </a>
       <a 
-        href="#" 
-        @click="active = 'users'" 
-        :class="active === 'users' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
+        href="{{route('pelanggan')}}" 
+        @click="active = 'pelanggan'" 
+        :class="active === 'pelanggan' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white'"
         class="text-xl p-3 rounded-lg"
       >
         <i class="fa-solid fa-users"></i>
@@ -68,9 +68,6 @@
     </nav>
 
     <!-- Logout -->
-    <div>
-      <a href="#" class="text-gray-400 text-xl p-3 rounded-lg hover:bg-gray-800 hover:text-white"></a>
-    </div>
   </div>
 
   <!-- Content Placeholder -->

@@ -34,27 +34,32 @@
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-900 bg-opacity-50">
     <div class="w-full max-w-xs glass-effect p-8 rounded-lg">
-        <form>
+        <form action="{{route('process-register')}}" method="POST">
+            @csrf
+            <div class="mb-3">
+                {{-- <label for="username" class="form-label">Username</label> --}}
+                <input type="hidden" name="role" value="user" class="form-control" id="username" placeholder="Enter your username">
+            </div>
             <div class="mb-4">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-4 py-2">
                     <i class="fa-solid fa-user text-white mr-3"></i>
-                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" type="text" placeholder="Username">
+                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" name="name" type="text" placeholder="Username">
                 </div>
             </div>
             <div class="mb-4">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-4 py-2">
                     <i class="fas fa-envelope text-white mr-3"></i>
-                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" type="email" placeholder="Email">
+                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" name="email" type="email" placeholder="Email">
                 </div>
             </div>
             <div class="mb-6">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-4 py-2">
                     <i class="fas fa-lock text-white mr-3"></i>
-                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" type="password" placeholder="Password">
+                    <input class="bg-transparent border-none w-full text-white placeholder-white focus:outline-none" name="password" type="password" placeholder="Password">
                 </div>
             </div>
             <div class="flex items-center justify-between">
-                <button class="bg-white bg-opacity-20 w-full hover:bg-opacity-30 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" type="button">
+                <button class="bg-white bg-opacity-20 w-full hover:bg-opacity-30 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" type="submit">
                     Sign In
                 </button>
             </div>
