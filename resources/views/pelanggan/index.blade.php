@@ -1,7 +1,15 @@
 @extends('main')
 @section('title','Pelanggan')
 @section('content')
-<h1 class="text-2xl font-bold" >Pelanggan</h1>
+<div class="flex w-full">
+  <h1 class="text-2xl w-[87%] font-bold" >Pelanggan</h1>
+  <a href="{{route('pelanggan.create')}}" class="bg-gray-700 text-white px-4 py-2 rounded-full">
+    Tambah Pelanggan
+  </a>
+</div>
+        @if ($pelanggan->isEmpty())
+            <p>Takde Lahh</p>
+            @else
 <body class="bg-gray-100">
     {{-- <header class="bg-purple-600 p-4 flex justify-between items-center">
      <div class="flex items-center">
@@ -78,55 +86,63 @@
          </button>
         </div> --}}
        {{-- </div> --}}
-       <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-        <div class="flex justify-between items-center">
+
+        
+        
+        @foreach ($pelanggan as $pelanggans)
+        
+        
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+          <div class="flex justify-between items-center">
          <div class="flex items-center space-x-4">
-          <div class="bg-black text-white  text-gray-600 px-4 py-2 rounded">
+          <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
             <i class="fa-solid fa-user"></i>
           </div>
           <div>
-           <p class="text-gray-600 font-semibold">
-            Piko
-           </p>
-           <p class="text-gray-400 text-sm">
-            Nama
+            <p class="text-gray-600 font-semibold">
+              {{ $pelanggans->NamaPelanggan }}
+            </p>
+            <p class="text-gray-400 text-sm">
+              Nama
            </p>
           </div>
          </div>
          <div class="flex items-center space-x-4">
-          <div>
-           <p class="text-gray-600 font-semibold">
-            Pikolo@gmail.com
-           </p>
-           <p class="text-gray-400 text-sm">
-            Email
-           </p>
-          </div>
-          <div>
-           <p class="text-gray-600 font-semibold">
-            User
-           </p>
-           <p class="text-gray-400 text-sm">
-            Role
+           <div>
+             <p class="text-gray-600 font-semibold">
+               {{ $pelanggans->Alamat }}
+              </p>
+              <p class="text-gray-400 text-sm">
+                Alamat
            </p>
           </div>
-            {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
+          <div>
+            <p class="text-gray-600 font-semibold">
+              {{ $pelanggans->NoTelepon }}
+            </p>
+            <p class="text-gray-400 text-sm">
+              NoTelepon
+            </p>
+          </div>
+          {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
             + Fix payment
-            </button> --}}
+          </button> --}}
           <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
            <i class="fas fa-pen">
-           </i>
-          </a>
+          </i>
+        </a>
           <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
             <i class="fa-solid fa-trash">
             </i>
           </a>
-         </div>
         </div>
-       </div>
-
-       
-    </main>
-   </body>
+      </div>
+    </div>
+    @endforeach
+  </div>
+  
+</main>
+</body>
+@endif
   
 @endsection

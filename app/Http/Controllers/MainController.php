@@ -57,4 +57,10 @@ class MainController extends Controller
 
         return redirect('/')->with('success', 'Registration successful! Please login.');
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget(['user', 'role']);
+        return redirect('/')->with('success', 'You have logged out!');
+    }
 }

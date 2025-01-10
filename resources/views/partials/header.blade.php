@@ -48,7 +48,10 @@
                   <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a>
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                  <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                 </li>
               </ul>
             </div>
