@@ -90,56 +90,60 @@
         
         
         @foreach ($pelanggan as $pelanggans)
-        
-        
-        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-          <div class="flex justify-between items-center">
-         <div class="flex items-center space-x-4">
-          <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div>
-            <p class="text-gray-600 font-semibold">
-              {{ $pelanggans->NamaPelanggan }}
-            </p>
-            <p class="text-gray-400 text-sm">
-              Nama
-           </p>
-          </div>
-         </div>
-         <div class="flex items-center space-x-4">
-           <div>
-             <p class="text-gray-600 font-semibold">
-               {{ $pelanggans->Alamat }}
+        <div class="flex flex-col">
+
+          <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex justify-between items-center">
+           <div class="flex items-center space-x-4">
+            <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+              <p class="text-gray-600 font-semibold">
+                {{ $pelanggans->NamaPelanggan }}
               </p>
               <p class="text-gray-400 text-sm">
-                Alamat
-           </p>
-          </div>
-          <div>
-            <p class="text-gray-600 font-semibold">
-              {{ $pelanggans->NoTelepon }}
-            </p>
-            <p class="text-gray-400 text-sm">
-              NoTelepon
-            </p>
-          </div>
-          {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
-            + Fix payment
-          </button> --}}
-          <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
-           <i class="fas fa-pen">
-          </i>
-        </a>
-          <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
-            <i class="fa-solid fa-trash">
+                Nama
+             </p>
+            </div>
+           </div>
+           <div class="flex items-center space-x-4">
+             <div>
+               <p class="text-gray-600 font-semibold">
+                 {{ $pelanggans->Alamat }}
+                </p>
+                <p class="text-gray-400 text-sm">
+                  Alamat
+             </p>
+            </div>
+            <div>
+              <p class="text-gray-600 font-semibold">
+                {{ $pelanggans->NoTelepon }}
+              </p>
+              <p class="text-gray-400 text-sm">
+                NoTelepon
+              </p>
+            </div>
+            {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
+              + Fix payment
+            </button> --}}
+            <a href="{{ route('pelanggan.edit', $pelanggans->id) }}" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
+             <i class="fas fa-pen">
             </i>
           </a>
+          <form action="{{ route('pelanggan.destroy', $pelanggans->id) }}" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE') 
+            <button type="submit" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full"><i class="fa-solid fa-trash"> </i></button>
+            
+        </form>
+          </div>
         </div>
       </div>
+      @endforeach
     </div>
-    @endforeach
-  </div>
+        </div>
+        
   
 </main>
 </body>

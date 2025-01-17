@@ -86,54 +86,59 @@
          </button>
         </div> --}}
         {{-- </div> --}}
-        @foreach ($produk as $produks)
+        {{-- @foreach ($produk as $produks) --}}
             
-        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
-                        <i class="fa-solid fa-boxes-stacked"></i>
+        <div class="flex flex-col">
+            @foreach ($produk as $produks)
+            <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <div class="flex flex-row justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-600 font-semibold">
+                                {{$produks->NamaProduk}}
+                            </p>
+                            <p class="text-gray-400 text-sm">
+                                Nama Produk
+                            </p>
+                        </div>
                     </div>
-                    <div>
+                    <div class="flex items-center space-x-4">
+                        <div>
+                            <p class="text-gray-600 font-semibold">
+                                Rp {{number_format($produks->HargaProduk ?? 0, 0, ',', '.')}}
+                            </p>
+                            <p class="text-gray-400 text-sm">
+                                Harga Produk
+                            </p>
+                      </div>
+                      <div>
                         <p class="text-gray-600 font-semibold">
-                            {{$produks->NamaProduk}}
+                            {{ $produks->Stok }}
                         </p>
                         <p class="text-gray-400 text-sm">
-                            Nama Produk
+                            Stok
                         </p>
+                    </div>
+                    {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
+                        + Fix payment
+                    </button> --}}
+                    <a href="{{route('produk.edit', $produks->id)}}" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
+                        <i class="fas fa-pen">
+                        </i>
+                    </a>
+                    <form action="{{ route('produk.destroy', $produks->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE') 
+                        <button type="submit" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full"><i class="fa-solid fa-trash"> </i></button>
+                        
+                    </form>
                     </div>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <div>
-                        <p class="text-gray-600 font-semibold">
-                            Rp {{number_format($produks->HargaProduk ?? 0, 0, ',', '.')}}
-                        </p>
-                        <p class="text-gray-400 text-sm">
-                            Harga Produk
-                        </p>
-          </div>
-          <div>
-           <p class="text-gray-600 font-semibold">
-               {{ $produks->Stok }}
-            </p>
-            <p class="text-gray-400 text-sm">
-                Stok
-            </p>
-        </div>
-        {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
-            + Fix payment
-        </button> --}}
-        <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
-            <i class="fas fa-pen">
-            </i>
-        </a>
-        <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
-            <i class="fa-solid fa-trash">
-            </i>
-          </a>
-        </div>
-        @endforeach
-        </div>
+            </div>
+            @endforeach
         </div>
 </div>
     

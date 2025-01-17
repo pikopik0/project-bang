@@ -7,13 +7,13 @@
      <div class="flex justify-between items-center">
       <div>
        <div class="text-lg">
-        Revenue Status
+        Jumlah Barang Terjual
        </div>
        <div class="text-3xl font-bold">
-        $432
+        {{ $jumlahterjual }}
        </div>
        <div class="text-sm">
-        Jan 01 - Jan 10
+        
        </div>
       </div>
       <i class="fas fa-chart-line text-4xl">
@@ -40,10 +40,10 @@
      <div class="flex justify-between items-center">
       <div>
        <div class="text-lg">
-        Bounce Rate
+        Produk Yang Dijual
        </div>
        <div class="text-3xl font-bold">
-        $432
+        {{ $totalbarang }}
        </div>
       </div>
       <i class="fas fa-chart-area text-4xl">
@@ -55,13 +55,12 @@
      <div class="flex justify-between items-center">
       <div>
        <div class="text-lg">
-        Revenue Status
+        Total Pelanggan
        </div>
        <div class="text-3xl font-bold">
-        $432
+        {{$jumlahpelanggan}}
        </div>
        <div class="text-sm">
-        Jan 01 - Jan 10
        </div>
       </div>
       <i class="fas fa-chart-line text-4xl">

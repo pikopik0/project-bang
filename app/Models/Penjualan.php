@@ -20,4 +20,27 @@ class Penjualan extends Model
     {
         return $this->belongsTo(Pelanggan::class);
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($event) {
+            $event->TanggalPenjualan = now(); // Mengisi tanggal saat record dibuat
+        });
+    }
+
+    public function detailPenjualan()
+    {
+        return $this->hasMany(DetailPenjualan::class, 'penjualan_id');
+    }
+    // public function viewdetailPenjualan()
+    // {
+    //     return $this->belongsTo(DetailPenjualan::class);
+    // }
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class,'produk_id');
+    }
+
+
 }

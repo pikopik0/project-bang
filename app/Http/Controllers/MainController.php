@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelanggan;
+use App\Models\Penjualan;
+use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +13,13 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $barangdijual = Produk::all();
+        $totalbarang = $barangdijual->count();
+        $penjualan = Penjualan::all();
+        $jumlahterjual = $penjualan->count();
+        $pelanggan = Pelanggan::all();
+        $jumlahpelanggan = $pelanggan->count();
+        return view('home.index',compact('totalbarang' , 'jumlahterjual' , 'jumlahpelanggan'));
     }
 
     public function viewlogin()

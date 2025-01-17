@@ -3,10 +3,13 @@
 @section('content')
 <div class="flex w-full">
     <h1 class="text-2xl w-[87%] font-bold" >Penjualan</h1>
-    <a href="" class="bg-gray-700 text-white px-4 py-2 rounded-full">
+    <a href="{{route('penjualan.create')}}" class="bg-gray-700 text-white px-4 py-2 rounded-full">
       Tambah Penjualan
     </a>
   </div>
+  @if ($penjualan->isEmpty())
+      <p>Takde Lahh</p>
+      @else
 <body class="bg-gray-100">
     {{-- <header class="bg-purple-600 p-4 flex justify-between items-center">
      <div class="flex items-center">
@@ -83,54 +86,86 @@
          </button>
         </div> --}}
        {{-- </div> --}}
-       <div class="bg-white p-4 rounded-lg shadow-md mb-4">
-        <div class="flex justify-between items-center">
-         <div class="flex items-center space-x-4">
-          <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
-            <i class="fa-solid fa-note-sticky"></i>
-          </div>
-          <div>
-           <p class="text-gray-600 font-semibold">
-            Piko
-           </p>
-           <p class="text-gray-400 text-sm">
-            Nama
-           </p>
-          </div>
-         </div>
-         <div class="flex items-center space-x-4">
-          <div>
-           <p class="text-gray-600 font-semibold">
-            Pikolo@gmail.com
-           </p>
-           <p class="text-gray-400 text-sm">
-            Email
-           </p>
-          </div>
-          <div>
-           <p class="text-gray-600 font-semibold">
-            User
-           </p>
-           <p class="text-gray-400 text-sm">
-            Role
-           </p>
-          </div>
-            {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
-            + Fix payment
-            </button> --}}
-          <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
-           <i class="fas fa-pen">
-           </i>
-          </a>
-          <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
-            <i class="fa-solid fa-trash">
-            </i>
-          </a>
-         </div>
+       <div class="flex flex-col">
+        @foreach ($penjualan as $penjualans)
+        @foreach ($penjualans->detailPenjualan as $item)
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="flex flex-row justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-gray-200 text-gray-600 text-gray-600 px-4 py-2 rounded">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-semibold">
+                          {{$penjualans->pelanggan->NamaPelanggan ?? ''}}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Nama Pembeli
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div>
+                            
+                        <p class="text-gray-600 font-semibold">
+                            {{$item->produk->NamaProduk}}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Nama Produk
+                        </p>
+                  </div>
+                  <div>
+                      <p class="text-gray-600 font-semibold">
+                          {{ number_format($item->jumlah ?? 0, 0, ',', '.') }}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Jumlah
+                        </p>
+                    </div>
+                  <div>
+                      <p class="text-gray-600 font-semibold">
+                          Rp {{ number_format($item->produk->HargaProduk ?? 0, 0, ',', '.') }}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Harga Produk
+                        </p>
+                    </div>
+                  <div>
+                      <p class="text-gray-600 font-semibold">
+                          Rp {{ number_format($item->Subtotal ?? 0, 0, ',', '.') }}
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Harga Produk
+                        </p>
+                    </div>
+                    {{-- <button class="bg-purple-600 text-white px-4 py-2 rounded-full">
+                        + Fix payment
+                    </button> --}}
+                    {{-- <a href="#" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
+                        <i class="fas fa-pen">
+                        </i>
+                    </a> --}}
+                    <a href="{{route('nota.generate' ,  $penjualans->id)}}" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full">
+                        <i class="fa-solid fa-note-sticky"></i>
+                    </a>
+                    
+                        <form action="{{ route('penjualan.destroy', $penjualans->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE') 
+                            <button type="submit" class="bg-gray-200 text-gray-600 px-3 py-2 rounded-full"><i class="fa-solid fa-trash"> </i></button>
+                            
+                        </form>    
+
+                  
+                </div>
+            </div>
         </div>
-       </div>
+        @endforeach
+        @endforeach
+    </div>
 
        
     </main>
    </body>
+   @endif
 @endsection

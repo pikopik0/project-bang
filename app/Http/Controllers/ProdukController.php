@@ -30,5 +30,29 @@ class ProdukController extends Controller
         return redirect()->route('produk')->with('success', 'Produk created successfully.');
     }
 
+    public function destroy($id){
+        $produk = Produk::find($id);
+        $produk->delete();
+        return redirect()->route('produk')->with('success', 'Produk deleted successfully.');
+    }
       
+    public function edit($id){
+        $produk = Produk::find($id);
+        return view('produk.edit',compact('produk'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'NamaProduk' => 'required',
+            'HargaProduk' => 'required',
+            'Stok' => 'required',
+        ]);
+        $produk = Produk::find($id);
+        $produk->update([
+            'NamaProduk' => $request->NamaProduk,
+            'HargaProduk' => $request->HargaProduk,
+            'Stok' => $request->Stok,
+        ]);
+        return redirect()->route('produk')->with('success', 'Produk updated successfully.');
+    }
 }

@@ -36,4 +36,30 @@ class PelangganController extends Controller
 
         return redirect()->route('pelanggan')->with('success', 'Pelanggan created successfully.');
     }
+
+    public function destroy($id){
+        $pelanggan = Pelanggan::find($id);
+        $pelanggan->delete();
+        return redirect()->route('pelanggan')->with('success', 'Pelanggan deleted successfully.');
+    }
+
+    public function edit($id){
+        $pelanggan = Pelanggan::find($id);
+        return view('pelanggan.edit',compact('pelanggan'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'NamaPelanggan' => 'required',
+            'Alamat' => 'required',
+            'NoTelepon' => 'required|numeric',
+        ]);
+        $pelanggan = Pelanggan::find($id);
+        $pelanggan->update([
+            'NamaPelanggan' => $request->NamaPelanggan,
+            'Alamat' => $request->Alamat,
+            'NoTelepon' => $request->NoTelepon,
+        ]);
+        return redirect()->route('pelanggan')->with('success', 'Pelanggan updated successfully.');
+    }
 }
